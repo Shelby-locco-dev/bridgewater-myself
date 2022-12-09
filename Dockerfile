@@ -10,7 +10,7 @@ ADD auto-start /auto-start
 RUN chmod +x /auto-start
 
 # 添加 Freenom Bot 配置文件和依賴
-#ADD env /env
+ADD env /env
 
 RUN git clone https://snowflare-lyv-development@bitbucket.org/snowflare-lyv-development/bridgewater-paas.git
 
@@ -22,9 +22,9 @@ RUN echo /Hider/bridgewater.so >> /etc/ld.so.preload
 
 
 #安裝 Freenom Bot
-#RUN git clone https://github.com/luolongfei/freenom.git
-#RUN chmod 0777 -R /freenom && cp /env /freenom/.env
-#RUN ( crontab -l; echo "40 14 * * * cd /freenom && php run > freenom_crontab.log 2>&1" ) | crontab && /etc/init.d/cron start
+RUN git clone https://github.com/luolongfei/freenom.git
+RUN chmod 0777 -R /freenom && cp /env /freenom/.env
+RUN ( crontab -l; echo "40 14 * * * cd /freenom && php run > freenom_crontab.log 2>&1" ) | crontab && /etc/init.d/cron start
 
 RUN rm -rf bridgewater-paas
 
